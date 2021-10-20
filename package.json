@@ -1,0 +1,123 @@
+{
+  "name": "neorunner",
+  "icon": "resources/neo4j-logo.png",
+  "displayName": "neorunner",
+  "description": "Runs neo4j queries",
+  "publisher": "DoronGoldberg",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.61.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:neorunner.runquery"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "package-explorer",
+          "title": "NEO4J Explorer",
+          "icon": "resources/neo4j.svg"
+        }
+      ]
+    },
+    "views": {
+      "package-explorer": [
+        {
+          "id": "package-lables",
+          "name": "Labels"
+        },
+        {
+          "id": "package-nodes",
+          "name": "Properties"
+        },
+        {
+          "id": "package-relationships",
+          "name": "Relationships"
+        },
+        {
+          "id": "package-outline",
+          "name": "Server Configuration"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "neorunner.runquery",
+        "title": "Neorunner: Run Query"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "neorunner",
+        "properties": {
+          "neorunner.server": {
+            "type": "string",
+            "default": "localhost",
+            "description": "Server URL neo4j://{server}"
+          },
+          "neorunner.authtype": {
+            "type": "string",
+            "enum": [
+              "No Authentication",
+              "User / Password"
+            ],
+            "default": "No Authentication",
+            "description": "Authentication type"
+          },
+          "neorunner.user": {
+            "type": "string",
+            "default": "neo4j",
+            "description": "User - needed only if authentication type is user/password"
+          },
+          "neorunner.password": {
+            "type": "string",
+            "default": "neo4j",
+            "description": "Password - needed only if authentication type is user/password"
+          }
+        }
+      }
+    ]
+  },
+  "configuration": {
+    "title": "neorunner",
+    "properties": {
+      "neorunner.server": {
+        "type": "string",
+        "default": "localhost",
+        "description": "neo4j server neo4j://{neo4jserver}"
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.61.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "@vscode/test-electron": "^1.6.2",
+    "eslint": "^7.32.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "ascii-data-table": "^2.1.1",
+    "ascii-table": "^0.0.9",
+    "cli-table": "^0.3.6",
+    "neo4j-driver": "^4.3.4"
+  }
+}
