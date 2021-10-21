@@ -1,4 +1,4 @@
-# neorunner README
+# neorunner
 
 Running cypher queries - from vs code!
 
