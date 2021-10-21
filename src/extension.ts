@@ -58,8 +58,10 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         output.appendLine(AsciiTable.table(items));
-      } catch {
-        vscode.window.showErrorMessage("Error while trying to run the query");
+      } catch (error) {
+        vscode.window.showErrorMessage(
+          "Error while trying to run the query: " + error
+        );
       } finally {
         await session.close();
       }

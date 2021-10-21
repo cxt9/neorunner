@@ -48,8 +48,8 @@ function activate(context) {
             }
             output.appendLine(ascii_data_table_1.default.table(items));
         }
-        catch {
-            vscode.window.showErrorMessage("Error while trying to run the query");
+        catch (error) {
+            vscode.window.showErrorMessage("Error while trying to run the query: " + error);
         }
         finally {
             await session.close();
