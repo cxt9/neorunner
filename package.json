@@ -5,6 +5,10 @@
   "description": "Runs neo4j queries",
   "publisher": "DoronGoldberg",
   "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cxt9/neorunner"
+  },
   "engines": {
     "vscode": "^1.61.0"
   },
