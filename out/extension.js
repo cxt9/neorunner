@@ -20,6 +20,9 @@ function activate(context) {
         const password = vscode.workspace
             .getConfiguration()
             .get("neorunner.password");
+        const clearOutPut = vscode.workspace
+            .getConfiguration()
+            .get("neorunner.clearoutput");
         const neo4j = require("neo4j-driver");
         const driver = neo4j.driver("neo4j://" + server, neo4j.auth.basic(), {
             disableLosslessIntegers: true,
@@ -33,6 +36,9 @@ function activate(context) {
         //vscode.window.showInformationMessage("Running:" + text);
         output.show(true);
         try {
+            if (clearOutPut) {
+                output.clear();
+            }
             output.appendLine(text);
             const result = await session.run(text, {});
             var items = [];

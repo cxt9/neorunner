@@ -21,6 +21,7 @@ This extension contributes the following settings:
 - `neorunner.server`: url of the neo4j server - neo4j://{neorunner.server}
 - `neorunner.user`: login user. (leave blank if authentication = false)
 - `neorunner.password`: login password. (leave blank if authentication = false)
+- `neorunner.clearoutput`: Clear output before running a new query
 
 ## Known Issues
 
@@ -32,4 +33,4 @@ Initial release of basic functionality: server configuration and ability to run 
 
 ### 1.0.1
 
-Coming soon!
+Clear output property was added to the settings
