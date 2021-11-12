@@ -16,7 +16,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:neorunner.runquery"
+    "onCommand:neorunner.runquery",
+    "onView:labelsList",
+    "onView:relationshipsList"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -32,20 +34,22 @@
     "views": {
       "package-explorer": [
         {
-          "id": "package-lables",
+          "id": "labelsList",
           "name": "Labels"
         },
         {
-          "id": "package-nodes",
-          "name": "Properties"
-        },
-        {
-          "id": "package-relationships",
+          "id": "relationshipsList",
           "name": "Relationships"
         },
         {
           "id": "package-outline",
           "name": "Server Configuration"
+        }
+      ],
+      "explorer": [
+        {
+          "id": "nodeDependencies-else",
+          "name": "Node Dependencies"
         }
       ]
     },

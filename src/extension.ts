@@ -3,10 +3,20 @@
 import { error } from "console";
 import * as vscode from "vscode";
 import AsciiTable from "ascii-data-table";
+import { allowedNodeEnvironmentFlags } from "process";
 
+import { LablesListProvider } from "./labelsList";
+import { RelationshipsListProvider } from "./relationshipsList";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 const output = vscode.window.createOutputChannel("neo4j query result");
+
+vscode.window.registerTreeDataProvider("labelsList", new LablesListProvider());
+vscode.window.registerTreeDataProvider(
+  "relationshipsList",
+  new RelationshipsListProvider()
+);
+
 export function activate(context: vscode.ExtensionContext) {
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated

@@ -3,9 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 const ascii_data_table_1 = require("ascii-data-table");
+const labelsList_1 = require("./labelsList");
+const relationshipsList_1 = require("./relationshipsList");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 const output = vscode.window.createOutputChannel("neo4j query result");
+vscode.window.registerTreeDataProvider("labelsList", new labelsList_1.LablesListProvider());
+vscode.window.registerTreeDataProvider("relationshipsList", new relationshipsList_1.RelationshipsListProvider());
 function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated

@@ -27,10 +27,14 @@ This extension contributes the following settings:
 
 ## Release Notes
 
-### 1.0.0
+### 1.0.2
 
-Initial release of basic functionality: server configuration and ability to run queries.
+Labels and Relationships explorer added
 
 ### 1.0.1
 
 Clear output property was added to the settings
+
+### 1.0.0
+
+Initial release of basic functionality: server configuration and ability to run queries.
