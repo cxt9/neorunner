@@ -10,11 +10,18 @@ import { RelationshipsListProvider } from "./relationshipsList";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 const output = vscode.window.createOutputChannel("neo4j query result");
+const lablesListProvider = new LablesListProvider();
+const relationshipsListProvider = new RelationshipsListProvider();
+vscode.window.registerTreeDataProvider("labelsList", lablesListProvider);
 
-vscode.window.registerTreeDataProvider("labelsList", new LablesListProvider());
+vscode.commands.registerCommand("lablesListProvider.refreshEntry", () => {
+  lablesListProvider.refresh();
+  relationshipsListProvider.refresh();
+});
+
 vscode.window.registerTreeDataProvider(
   "relationshipsList",
-  new RelationshipsListProvider()
+  relationshipsListProvider
 );
 
 export function activate(context: vscode.ExtensionContext) {

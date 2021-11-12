@@ -4,6 +4,15 @@ import * as path from "path";
 
 export class LablesListProvider implements vscode.TreeDataProvider<Label> {
   constructor() {}
+  private _onDidChangeTreeData: vscode.EventEmitter<
+    Label | undefined | null | void
+  > = new vscode.EventEmitter<Label | undefined | null | void>();
+  readonly onDidChangeTreeData: vscode.Event<Label | undefined | null | void> =
+    this._onDidChangeTreeData.event;
+
+  refresh(): void {
+    this._onDidChangeTreeData.fire();
+  }
 
   getTreeItem(element: Label): vscode.TreeItem {
     return element;

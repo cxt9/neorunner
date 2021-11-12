@@ -3,7 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LablesListProvider = void 0;
 const vscode = require("vscode");
 class LablesListProvider {
-    constructor() { }
+    constructor() {
+        this._onDidChangeTreeData = new vscode.EventEmitter();
+        this.onDidChangeTreeData = this._onDidChangeTreeData.event;
+    }
+    refresh() {
+        this._onDidChangeTreeData.fire();
+    }
     getTreeItem(element) {
         return element;
     }

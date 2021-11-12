@@ -4,7 +4,7 @@
   "displayName": "neorunner",
   "description": "Runs neo4j queries",
   "publisher": "DoronGoldberg",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/cxt9/neorunner"
@@ -22,6 +22,12 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsWelcome": [
+      {
+        "view": "labelsList",
+        "contents": "Could not connect to a neo4j server / server not found [learn more](https://github.com/cxt9/neorunner).\n[Retry](command:lablesListProvider.refreshEntry)"
+      }
+    ],
     "viewsContainers": {
       "activitybar": [
         {
