@@ -2,6 +2,10 @@
 
 All notable changes to the "neorunner" extension will be documented in this file.
 
+## [1.0.5] - 2021-11-13
+
+Fixed login to remote server (configurable via settings)
+
 ## [1.0.2] - 2021-11-13
 
 Labels and Relationships explorer added

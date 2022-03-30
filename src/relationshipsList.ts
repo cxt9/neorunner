@@ -20,12 +20,6 @@ export class RelationshipsListProvider
   }
 
   getChildren(element?: Label): Thenable<Label[]> {
-    //Check if there is DB connection
-    if (!"/home/doron/Projects/neorunner") {
-      vscode.window.showInformationMessage("No dependency in empty workspace");
-      return Promise.resolve([]);
-    }
-
     if (element) {
       return Promise.resolve(this.getLabels(element.label));
     } else {
@@ -35,14 +29,24 @@ export class RelationshipsListProvider
   private async getLabels(label: string): Promise<Label[]> {
     const server = vscode.workspace.getConfiguration().get("neorunner.server");
     const user = vscode.workspace.getConfiguration().get("neorunner.user");
+    const authtype = vscode.workspace
+      .getConfiguration()
+      .get("neorunner.authtype");
+    const db = vscode.workspace.getConfiguration().get("neorunner.database");
     const password = vscode.workspace
       .getConfiguration()
       .get("neorunner.password");
 
     const neo4j = require("neo4j-driver");
-    const driver = neo4j.driver("neo4j://" + server, neo4j.auth.basic(), {
-      disableLosslessIntegers: true,
-    });
+
+    const driver =
+      authtype == "User / Password"
+        ? neo4j.driver("neo4j://" + server, neo4j.auth.basic(user, password), {
+            disableLosslessIntegers: true,
+          })
+        : neo4j.driver("neo4j://" + server, neo4j.auth.basic(), {
+            disableLosslessIntegers: true,
+          });
     const session = driver.session();
     const result = await session
       .run(

@@ -30,13 +30,20 @@ function activate(context) {
         const password = vscode.workspace
             .getConfiguration()
             .get("neorunner.password");
+        const authtype = vscode.workspace
+            .getConfiguration()
+            .get("neorunner.authtype");
         const clearOutPut = vscode.workspace
             .getConfiguration()
             .get("neorunner.clearoutput");
         const neo4j = require("neo4j-driver");
-        const driver = neo4j.driver("neo4j://" + server, neo4j.auth.basic(), {
-            disableLosslessIntegers: true,
-        });
+        const driver = authtype == "User / Password"
+            ? neo4j.driver("neo4j://" + server, neo4j.auth.basic(user, password), {
+                disableLosslessIntegers: true,
+            })
+            : neo4j.driver("neo4j://" + server, neo4j.auth.basic(), {
+                disableLosslessIntegers: true,
+            });
         const session = driver.session();
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user

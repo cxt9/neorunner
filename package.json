@@ -4,7 +4,7 @@
   "displayName": "neorunner",
   "description": "Runs neo4j queries",
   "publisher": "DoronGoldberg",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/cxt9/neorunner"
@@ -70,11 +70,13 @@
         "title": "neorunner",
         "properties": {
           "neorunner.server": {
+            "order": 1,
             "type": "string",
             "default": "localhost",
             "description": "Server URL neo4j://{server}"
           },
           "neorunner.authtype": {
+            "order": 0,
             "type": "string",
             "enum": [
               "No Authentication",
@@ -84,16 +86,25 @@
             "description": "Authentication type"
           },
           "neorunner.user": {
+            "order": 2,
             "type": "string",
             "default": "neo4j",
             "description": "User - needed only if authentication type is user/password"
           },
           "neorunner.password": {
+            "order": 3,
             "type": "string",
             "default": "neo4j",
             "description": "Password - needed only if authentication type is user/password"
           },
+          "neorunner.database": {
+            "order": 4,
+            "type": "string",
+            "default": "",
+            "description": "Database Name - Leave blank for default"
+          },
           "neorunner.clearoutput": {
+            "order": 5,
             "type": "boolean",
             "default": false,
             "description": "Clear output before running a new query"
@@ -128,6 +139,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "@vscode/test-electron": "^1.6.2",
+    "esbuild": "^0.14.29",
     "eslint": "^7.32.0",
     "glob": "^7.1.7",
     "mocha": "^9.1.1",
