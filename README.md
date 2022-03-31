@@ -22,10 +22,16 @@ This extension contributes the following settings:
 - `neorunner.user`: login user. (leave blank if authentication = false)
 - `neorunner.password`: login password. (leave blank if authentication = false)
 - `neorunner.clearoutput`: Clear output before running a new query
+- `neorunner.authtype`: Authentication method
+- `neorunner.database`: DB Name
 
 ## Known Issues
 
 ## Release Notes
+
+## 1.0.5
+
+Fixed login to remote server (configurable via settings)
 
 ### 1.0.2
 
